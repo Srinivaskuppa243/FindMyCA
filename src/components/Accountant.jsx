@@ -35,7 +35,7 @@ const Accountant = () => {
 
   return (
     <div className="container mx-auto mt-4">
-      <h1 className="text-2xl font-bold">Chartered Accountants</h1>
+      <h1 className="text-center text-4xl font-bold">Chartered Accountants</h1>
 
       {/* Search input */}
       <div className="mt-4 relative">

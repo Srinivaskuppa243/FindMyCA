@@ -18,33 +18,44 @@ const Details = () => {
     if (!accountant) return <div>Loading...</div>;
 
     return (
-        <div className="container mx-auto mt-4 flex flex-col items-center justify-center min-h-screen max-w-md px-4 py-6 bg-white shadow-lg rounded-lg">
-            <h1 className="text-2xl font-bold mt-4 text-center">{accountant.name}</h1>
-            <img src={accountant.image} alt={accountant.name} className="rounded-full mt-4 w-32 h-32" />
+        <div className="container mx-auto my-4 flex flex-col items-center justify-center min-h-screen max-w-lg px-4 py-6 bg-white shadow-lg rounded-lg">
+            <h1 className="text-2xl font-bold text-center">{accountant.name}</h1>
+            <img src={accountant.image} alt={accountant.name} className="rounded-full mt-4 w-32 h-32 object-cover" />
             <div className='text-center text-md'>
-                <p className="mt-2">{accountant.intro}</p>
-                <p className="mt-2">Rating: {accountant.rating} ({accountant.reviewCount} reviews)</p>
-                <p className="mt-2">Price: {accountant.price}</p>
-                <p className="mt-2">Delivery Time: {accountant.deliveryTime}</p>
-                <h2 className="mt-4"><strong>About</strong></h2>
+                <p>{accountant.intro}</p>
+
+                <h2 className="text-xl text-left mt-4"><strong>About</strong></h2>
                 <p>{accountant.about.description}</p>
-                <h3 className="mt-2"><strong>Services Offered:</strong></h3>
-                <ul className="list-disc list-inside">
-                    {accountant.about.services.map((service, index) => (
-                        <li key={index}>{service}</li>
-                    ))}
-                </ul>
-                <h3 className="mt-2"><strong>Benefits:</strong></h3>
-                <ul className="list-disc list-inside">
-                    {accountant.about.benefits.map((benefit, index) => (
-                        <li key={index}>{benefit}</li>
-                    ))}
-                </ul>
-                <h3 className="mt-4"><strong>Testimonial:</strong></h3>
+                <div className="flex flex-col md:flex-row gap-6">
+                    <div className="text-left flex-1">
+                        <h3 className="mt-4 text-xl font-semibold">Services Offered:</h3>
+                        <ul className="list-disc list-inside pl-5 text-left">
+                            {accountant.about.services.map((service, index) => (
+                                <li key={index} className="text-md text-gray-700 mb-2 hover:text-blue-600 transition-colors duration-200">{service}</li>
+                            ))}
+                        </ul>
+                    </div>
+                    <div className="text-left flex-1">
+                        <h3 className="mt-4 text-xl font-semibold">Benefits:</h3>
+                        <ul className="list-disc list-inside pl-5">
+                            {accountant.about.benefits.map((benefit, index) => (
+                                <li className="text-md text-gray-700 mb-2 hover:text-blue-600 transition-colors duration-200">{benefit}</li>
+                            ))}
+                        </ul>
+                    </div>
+                </div>
+
+                <div className='text-left text-xl mt-2'>
+                    <p><strong>Rating:</strong> {accountant.rating}⭐️ ({accountant.reviewCount} reviews)</p>
+                    <p><strong>Price:</strong> {accountant.price}</p>
+                    <p><strong>Delivery Time:</strong> {accountant.deliveryTime}</p>
+                </div>
+                <h3 className="text-left text-xl mt-4"><strong>Testimonial:</strong></h3>
                 <blockquote className="border-l-4 border-blue-600 pl-4 italic text-sm">
                     "{accountant.testimonial.text}" - <strong>{accountant.testimonial.author}</strong>
                 </blockquote>
-                <button onClick={() => navigate('/accountant')} className="bg-black text-white px-4 py-2 mt-4 rounded text-sm">Back</button>
+                <button className='bg-black text-white px-4 py-2 rounded text-md mx-1'>Reach Out</button>
+                <button onClick={() => navigate('/accountant')} className="bg-black text-white px-4 py-2 mt-4 rounded text-md">Back</button>
             </div>
         </div>
 
